@@ -42,6 +42,9 @@ npm run ios
 yarn ios
 ```
 
+# link assets
+npx react-native-asset
+
 
 ### Dependency
 
