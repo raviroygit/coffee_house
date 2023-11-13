@@ -128,6 +128,47 @@ const HomeScreen = () => {
             <></>
           )}
         </View>
+
+        {/* Category Scroller */}
+
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.CategoryScrollViewStyle}>
+          {categories.map((data, index) => (
+            <View
+              key={index.toString()}
+              style={styles.CategoryScrollViewContainer}>
+              <TouchableOpacity
+                style={styles.CategoryScrollViewItem}
+                onPress={() => {
+                  ListRef?.current?.scrollToOffset({
+                    animated: true,
+                    offset: 0,
+                  });
+                  setCategoryIndex({index: index, category: categories[index]});
+                  setSortedCoffee([
+                    ...getCoffeeList(categories[index], CoffeeList),
+                  ]);
+                }}>
+                <Text
+                  style={[
+                    styles.CategoryText,
+                    categoryIndex.index == index
+                      ? {color: COLORS.primaryOrangeHex}
+                      : {},
+                  ]}>
+                  {data}
+                </Text>
+                {categoryIndex.index == index ? (
+                  <View style={styles.ActiveCategory} />
+                ) : (
+                  <></>
+                )}
+              </TouchableOpacity>
+            </View>
+          ))}
+        </ScrollView>
       </ScrollView>
     </View>
   )
