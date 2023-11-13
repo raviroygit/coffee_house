@@ -43,7 +43,7 @@ yarn ios
 
 
 
-# Dependency
+### Dependency
 
 1) React Navigation
 
